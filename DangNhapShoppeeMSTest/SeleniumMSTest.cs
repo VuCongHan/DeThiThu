@@ -14,26 +14,26 @@ namespace DangNhapShoppeeMSTest
         {
             var options = new ChromeOptions();
 
-            // 👉 Mở Chrome với Profile đã đăng nhập sẵn
-            options.AddArgument(@"user-data-dir=C:\Users\vuhan\AppData\Local\Google\Chrome\User Data");
-            options.AddArgument("--profile-directory=Profile 5");  // Nếu dùng profile khác, đổi thành "Profile 1", "Profile 2"
+            //// 👉 Mở Chrome với Profile đã đăng nhập sẵn
+            //options.AddArgument(@"user-data-dir=C:\Users\vuhan\AppData\Local\Google\Chrome\User Data");
+            //options.AddArgument("--profile-directory=Profile 5");  // Nếu dùng profile khác, đổi thành "Profile 1", "Profile 2"
 
-            // 👉 Giả lập trình duyệt thật để tránh Google phát hiện
-            options.AddArgument("--disable-blink-features=AutomationControlled");
-            options.AddExcludedArgument("enable-automation");
-            options.AddAdditionalOption("useAutomationExtension", false);
-
-            //// 👉 Chạy ở chế độ headless trên GitHub Actions
-            //options.AddArgument("--headless");  // Không hiển thị UI
-            //options.AddArgument("--no-sandbox");  // Tránh lỗi sandbox trên CI/CD
-            //options.AddArgument("--disable-dev-shm-usage");  // Giảm rủi ro full bộ nhớ tạm
-            //options.AddArgument("--disable-gpu");  // Không cần GPU khi chạy headless
-            //options.AddArgument("--incognito");  // Chạy ở chế độ ẩn danh để tránh lỗi session
-
-            // 👉 Giả lập trình duyệt thật
+            //// 👉 Giả lập trình duyệt thật để tránh Google phát hiện
             //options.AddArgument("--disable-blink-features=AutomationControlled");
             //options.AddExcludedArgument("enable-automation");
             //options.AddAdditionalOption("useAutomationExtension", false);
+
+            // 👉 Chạy ở chế độ headless trên GitHub Actions
+            options.AddArgument("--headless");  // Không hiển thị UI
+            options.AddArgument("--no-sandbox");  // Tránh lỗi sandbox trên CI/CD
+            options.AddArgument("--disable-dev-shm-usage");  // Giảm rủi ro full bộ nhớ tạm
+            options.AddArgument("--disable-gpu");  // Không cần GPU khi chạy headless
+            options.AddArgument("--incognito");  // Chạy ở chế độ ẩn danh để tránh lỗi session
+
+            // 👉 Giả lập trình duyệt thật
+            options.AddArgument("--disable-blink-features=AutomationControlled");
+            options.AddExcludedArgument("enable-automation");
+            options.AddAdditionalOption("useAutomationExtension", false);
 
             // 👉 Khởi tạo ChromeDriver với cấu hình trên
             driver = new ChromeDriver(options);
